@@ -19,7 +19,7 @@ class BalancedBatchSampler(Sampler):
 
         self.normal_generator = self.random_generator(self.dataset.normal_idx)
         self.outlier_generator = self.random_generator(self.dataset.outlier_idx)
-        if self.cfg.nAnomaly != 0:
+        if self.cfg.n_anomaly != 0:
             self.n_normal = self.cfg.batch_size // 2
             self.n_outlier = self.cfg.batch_size - self.n_normal
         else:

@@ -1,3 +1,47 @@
-# Explainable Deep Few-shot Anomaly Detectionwith Deviation Networks
+# Explainable Deep Few-shot Anomaly Detection with Deviation Networks
 By Guansong Pang, Choubo Ding, Chunhua Shen, Tianyou Chai, Anton van den Hengel
 
+## Setup 
+This code is written in `Python 3.6` and requires the packages listed in `requirements.txt`. Install with `pip install -r
+requirements.txt` preferably in a virtualenv.
+
+## Usage
+
+#### Step 1. Setup the Anomaly Detection Dataset
+Download the Anomaly Detection Dataset and convert it to MVTec AD format. (For datasets we used in the paper, we provided the convert script.) 
+The dataset folder structure should look like:
+```
+DATA_PATH/
+    subset_1/
+        train/
+            good/
+        test/
+            good/
+            defect_class_1/
+            defect_class_2/
+            defect_class_3/
+            ...
+        ground_truth/
+            defect_class_1/
+            defect_class_2/
+            defect_class_3/
+            ...
+    ...
+```
+NOTE: The `ground_truth` folder only available when the dataset has pixel-level annotation.
+
+#### Step 2. Running DevNet
+```bash
+python train.py --dataset_root=./data/mvtec_anomaly_detection \
+                --classname=carpet \
+                --experiment_dir=./experiment \
+                --epochs=50 \
+                --n_anomaly=10 \
+                --n_scales=2
+```
+- `dataset_root` denotes the path of the dataset.
+- `classname` denotes the subset name of the dataset.
+- `experiment_dir` denotes the path to store the experiment setting and model weight.
+- `epochs` denotes the total epoch of training. 
+- `n_anomaly` denotes the amount of the know outliers. 
+- `n_scales` denotes the total scales of multi-scales module. 

@@ -12,7 +12,7 @@ class MVTecAD(BaseADDataset):
         self.train = train
         self.classname = self.args.classname
 
-        self.root = os.path.join(self.args.datasetRoot, self.classname)
+        self.root = os.path.join(self.args.dataset_root, self.classname)
         self.transform = self.transform_train() if self.train else self.transform_test()
 
         normal_data = list()
@@ -48,15 +48,15 @@ class MVTecAD(BaseADDataset):
             for file in outlier_file:
                 if 'png' in file[-3:] or 'PNG' in file[-3:] or 'jpg' in file[-3:] or 'npy' in file[-3:]:
                     outlier_data.append('test/' + cl + '/' + file)
-        if self.args.nAnomaly > len(outlier_data)/2:
+        if self.args.n_anomaly > len(outlier_data)/2:
             print(len(outlier_data))
             print("Number of outlier data in training set should less than half of outlier datas!")
             sys.exit()
         np.random.RandomState(self.args.ramdn_seed).shuffle(outlier_data)
         if self.train:
-            return outlier_data[0:self.args.nAnomaly]
+            return outlier_data[0:self.args.n_anomaly]
         else:
-            return outlier_data[self.args.nAnomaly:]
+            return outlier_data[self.args.n_anomaly:]
 
     def load_image(self, path):
         if 'npy' in path[-3:]:

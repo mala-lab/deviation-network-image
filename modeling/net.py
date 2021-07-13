@@ -11,6 +11,7 @@ class SemiADNet(nn.Module):
         self.feature_extractor = build_feature_extractor(self.args.backbone)
         self.conv = nn.Conv2d(in_channels=NET_OUT_DIM[self.args.backbone], out_channels=1, kernel_size=1, padding=0)
 
+
     def forward(self, image):
 
         if self.args.n_scales == 0:
@@ -21,7 +22,7 @@ class SemiADNet(nn.Module):
             image_scaled = F.interpolate(image, size=self.args.img_size // (2 ** s)) if s > 0 else image
             feature = self.feature_extractor(image_scaled)
 
-            scores = self.reduce(feature)
+            scores = self.conv(feature)
             if self.args.topk > 0:
                 scores = scores.view(int(scores.size(0)), -1)
                 topk = max(int(scores.size(1) * self.args.topk), 1)
