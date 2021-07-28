@@ -1,5 +1,5 @@
 # Explainable Deep Few-shot Anomaly Detection with Deviation Networks
-By Guansong Pang, Choubo Ding, Chunhua Shen, Tianyou Chai, Anton van den Hengel
+By Guansong Pang, Choubo Ding, Chunhua Shen, Anton van den Hengel
 
 ## Setup 
 This code is written in `Python 3.6` and requires the packages listed in `requirements.txt`. Install with `pip install -r
