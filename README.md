@@ -45,3 +45,13 @@ python train.py --dataset_root=./data/mvtec_anomaly_detection \
 - `epochs` denotes the total epoch of training. 
 - `n_anomaly` denotes the amount of the know outliers. 
 - `n_scales` denotes the total scales of multi-scales module. 
+
+## Citation
+```bibtex
+@article{pang2021explainable,
+  title={Explainable Deep Few-shot Anomaly Detection with Deviation Networks},
+  author={Pang, Guansong and Ding, Choubo and Shen, Chunhua and Hengel, Anton van den},
+  journal={arXiv preprint arXiv:2108.00462},
+  year={2021}
+}
+```
