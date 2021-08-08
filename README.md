@@ -1,6 +1,7 @@
 # Explainable Deep Few-shot Anomaly Detection with Deviation Networks
 By Guansong Pang, Choubo Ding, Chunhua Shen, Anton van den Hengel
 
+Official PyTorch implementation of ["Explainable Deep Few-shot Anomaly Detection with Deviation Networks"](https://arxiv.org/abs/2108.00462).
 ## Setup 
 This code is written in `Python 3.6` and requires the packages listed in `requirements.txt`. Install with `pip install -r
 requirements.txt` preferably in a virtualenv.
