@@ -47,6 +47,16 @@ python train.py --dataset_root=./data/mvtec_anomaly_detection \
 - `n_anomaly` denotes the amount of the know outliers. 
 - `n_scales` denotes the total scales of multi-scales module. 
 
+#### Step 2. Anomaly Explanation
+Visualize the localization result of the trained model by the following command:
+```bash
+python localization.py --dataset_root=./data/mvtec_anomaly_detection \
+                       --classname=carpet \
+                       --experiment_dir=./experiment \
+                       --n_anomaly=10 \
+                       --n_scales=2
+```
+NOTE: use same argument as the training command.
 ## Citation
 ```bibtex
 @article{pang2021explainable,

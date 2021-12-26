@@ -88,3 +88,16 @@ class MVTecAD(BaseADDataset):
         image = self.load_image(os.path.join(self.root, self.images[index]))
         sample = {'image': transform(image), 'label': self.labels[index]}
         return sample
+
+    def getitem(self, index):
+        if index in self.outlier_idx and self.train:
+            transform = self.transform_anomaly
+        else:
+            transform = self.transform
+        image = self.load_image(os.path.join(self.root, self.images[index]))
+        if index in self.outlier_idx:
+            image_label = self.load_image(os.path.join(self.root,self.images[index]).replace('test','ground_truth').replace('.png','_mask.png'))
+        else:
+            image_label = None
+        sample = {'image': transform(image), 'label': self.labels[index], 'seg_label': image_label, 'raw_image':image}
+        return sample
